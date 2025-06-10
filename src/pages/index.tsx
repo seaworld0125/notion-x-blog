@@ -8,6 +8,7 @@ import { queryKey } from "src/constants/queryKey"
 import { GetStaticProps } from "next"
 import { dehydrate } from "@tanstack/react-query"
 import { filterPosts } from "src/libs/utils/notion"
+import { Analytics } from "@vercel/analytics/next"
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = filterPosts(await getPosts())
@@ -31,6 +32,7 @@ const FeedPage: NextPageWithLayout = () => {
 
   return (
     <>
+      <Analytics />
       <MetaConfig {...meta} />
       <Feed />
     </>
